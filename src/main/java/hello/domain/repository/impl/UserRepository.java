@@ -40,11 +40,14 @@ public class UserRepository implements IUserRepository {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
-	public void reserveRoom(User u, Room r, LocalDateTime start, LocalDateTime stop) {
-		// TODO Auto-generated method stub
-
+	public User getUserByName(String name){
+		return userMapByName.get(name);
 	}
-
+	
+	@Override
+	public User getUserByIdCard(String name){
+		return userMapByIdCard.get(name);
+	}
 }

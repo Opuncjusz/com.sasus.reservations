@@ -14,9 +14,7 @@ public interface IUserRepository {
 	
 	public List<Reservation> getReservations(User u);
 	
-	public void reserveRoom(User u , Room r , LocalDateTime start , LocalDateTime stop);
+	public User getUserByName(String name);
 	
-	
-	
-	
+	public User getUserByIdCard(String name);
 }

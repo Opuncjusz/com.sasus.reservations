@@ -40,8 +40,7 @@ public class GroupRepository implements IGroupRepository {
 
 	@Override
 	public Room getRoom(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return overseer.getRoom(name);
 	}
 
 	
