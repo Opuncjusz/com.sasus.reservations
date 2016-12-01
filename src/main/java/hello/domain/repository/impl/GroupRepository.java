@@ -16,7 +16,11 @@ public class GroupRepository implements IGroupRepository {
 		
 		Group b1=createGroup("Budynek MT 2",overseer);
 		Group b2=createGroup("Budynek MT 4",overseer);
-//		Group create
+ 		Group f1=createGroup("Piętro 1",b2);
+ 		Group f2=createGroup("Piętro 2",b2);
+ 		f1.addRoom(new Room("1.01",f1));
+ 		f1.addRoom(new Room("1.02",f1));
+ 		f2.addRoom(new Room("2.01",f2));
 		
 	}
 
@@ -32,6 +36,12 @@ public class GroupRepository implements IGroupRepository {
 	public void addRoom(Group parent, Room r) {
 		parent.addRoom(r);
 		
+	}
+
+	@Override
+	public Room getRoom(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

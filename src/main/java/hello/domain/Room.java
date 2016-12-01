@@ -7,7 +7,7 @@ public class Room {
 
 	
 	
-	Room(String name, Group g){
+	public Room(String name, Group g){
 		this.name=name;
 		this.group=g;
 	}

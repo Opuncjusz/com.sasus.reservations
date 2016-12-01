@@ -48,4 +48,26 @@ public class Group {
 		return ret;
 	}
 	
+	public Room getRoom(String name){
+		Room r=null;
+		for(Room el: rooms){
+			if(el.name==name){
+				r=el;
+				return r;
+			}
+		
+		}
+		for(Group el:subGroups){
+			r=el.getRoom(name);
+		}
+		
+		if(r==null){
+			return null;
+		}else{
+			return r;
+		}
+		
+		}
 	}
+	
+	

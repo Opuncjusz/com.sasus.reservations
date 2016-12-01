@@ -9,4 +9,7 @@ public interface IGroupRepository {
 	
 	public void addRoom(Group parent, Room r);
 	
+	public Room getRoom(String name);
+	
+	
 }
