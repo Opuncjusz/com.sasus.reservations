@@ -30,9 +30,9 @@ public class ReservationRepository implements IReservationRepository {
 	}
 
 	
-	public Reservation getCurrentReservation(Room r){
+	public Reservation getReservation(Room r,LocalDateTime time ){
 		for(Reservation res:reservations.get(r)){
-			if(LocalDateTime.now().isAfter(res.timeStart) && LocalDateTime.now().isBefore(res.timeStop)){
+			if(time.isAfter(res.timeStart) && time.isBefore(res.timeStop)){
 				return res;
 			}
 		}
@@ -40,8 +40,8 @@ public class ReservationRepository implements IReservationRepository {
 	}
 	
 	@Override
-	public boolean isRoomFree(Room r) {
-		return getCurrentReservation(r)==null?true:false;
+	public boolean isRoomFree(Room r, LocalDateTime time) {
+		return getReservation(r,time) == null;
 	}
 
 	@Override
@@ -51,9 +51,22 @@ public class ReservationRepository implements IReservationRepository {
 	}
 	
 	@Override
-	public void reserveRoom(User u, Room r, LocalDateTime start, LocalDateTime stop) {
-		// TODO Auto-generated method stub
+	public boolean reserveRoom(User u, Room r, LocalDateTime start, LocalDateTime stop) {
+		if(isRoomFree(r,start) && isRoomFree(r,stop)){
+			List res=reservations.get(r);
+			if(res==null){
+				res=new ArrayList<Reservation>();
+				reservations.put(r,res);
+			}
+			res.add(new Reservation(u,r,start,stop));
+			return true;
+		}else{
+			return false;
+		}
 
 	}
+
+
+
 
 }
