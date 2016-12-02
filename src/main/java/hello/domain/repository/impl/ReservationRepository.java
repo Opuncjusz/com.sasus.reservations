@@ -73,7 +73,7 @@ public class ReservationRepository implements IReservationRepository {
 			}
 			res.add(new Reservation(u, r, start, stop));
 			System.out.println(
-					"Użytkownik " + u.getName() + " zarejestrował pokój " + r.name + " od " + start + " do " + stop);
+					"Użytkownik " + u.getName() + " zarezerwował pokój " + r.name + " od " + start + " do " + stop);
 			return true;
 		} else {
 			Reservation res = getReservation(r, stop);

@@ -15,7 +15,7 @@ public class Reservation {
 		this.room = r;
 		this.timeStart = start;
 		this.timeStop = stop;
-		this.confirmed = false;
+		this.confirmed = true;
 
 	}
 
