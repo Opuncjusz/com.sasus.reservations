@@ -17,51 +17,49 @@ import hello.domain.repository.IGroupRepository;
 import hello.domain.repository.IReservationRepository;
 
 @Repository
-public class ActualDevice implements IDeviceRepository{
+public class ActualDevice implements IDeviceRepository {
 
-	public Map<Room,Device> connectedDevices;
-	
+	public Map<Room, Device> connectedDevices;
+
 	@Autowired
 	public IGroupRepository allRooms;
-	
+
 	@Autowired
 	public IReservationRepository reservations;
-	
-	
-	public ActualDevice() {
-		connectedDevices = new HashMap<Room,Device>();
-		//connectDevice("Tablet 1","1.01");
-		//connectDevice("Tablet 2","1.02");		
 
+	public ActualDevice() {
+		connectedDevices = new HashMap<Room, Device>();
 	}
 
 	@Override
-	public void connectDevice(String idDevice,String roomName) {
-		Device d=new Device(idDevice,allRooms.getRoom(roomName));
-		System.out.println("Urządzenie "+idDevice+" przy pokoju" + roomName + "zostało uruchomione");
-		connectedDevices.put(d.room,d);		
+	public Device connectDevice(String idDevice, String roomName) {
+		Device device = new Device(idDevice, allRooms.getRoom(roomName));
+		System.out.println("Urządzenie " + idDevice + " przy pokoju " + roomName + " zostało uruchomione");
+		connectedDevices.put(device.room, device);
+		return device;
 	}
 
 	@Override
 	public void disconnectDevice(Device d) {
-		connectedDevices.remove(d);	
+		connectedDevices.remove(d);
 	}
 
 	@Override
 	public void sendStatus(LocalDateTime timestamp) {
-		//aktualizacja tabletów
-		DeviceMessage msg=null;
-		Device dev=null;
-		for(Room room:allRooms.getAllRooms()){
-			msg=null;
-			dev=null;
-			msg=reservations.getRoomStatus(room, LocalDateTime.now());
-			dev=connectedDevices.get(room);
-			if(dev!=null){
-				System.out.println("tu następuje wysyłka danych do urządzenia" + dev.idDevice + "\n przy sali "+ room.name +"\n o statusie: "+msg.status + " \n "+ msg.additionalInfo);
+
+		DeviceMessage msg = null;
+		Device dev = null;
+		for (Room room : allRooms.getAllRooms()) {
+			msg = null;
+			dev = null;
+			msg = reservations.getRoomStatus(room, LocalDateTime.now());
+			dev = connectedDevices.get(room);
+			if (dev != null) {
+				System.out.println("tu następuje wysyłka danych do urządzenia" + dev.idDevice + "\n przy sali "
+						+ room.name + "\n o statusie: " + msg.status + " \n " + msg.additionalInfo);
 			}
 		}
-		
+
 	}
 
 }

@@ -9,15 +9,14 @@ public class Reservation {
 	public LocalDateTime timeStart;
 	public LocalDateTime timeStop;
 	public boolean confirmed;
-	
-	
-	public Reservation(User u,Room r, LocalDateTime start, LocalDateTime stop) {
-		this.owner=u;
-		this.room=r;
-		this.timeStart=start;
-		this.timeStop=stop;
-		this.confirmed=false;
-		
+
+	public Reservation(User u, Room r, LocalDateTime start, LocalDateTime stop) {
+		this.owner = u;
+		this.room = r;
+		this.timeStart = start;
+		this.timeStop = stop;
+		this.confirmed = false;
+
 	}
 
 }
