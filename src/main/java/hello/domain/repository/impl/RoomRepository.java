@@ -1,8 +1,11 @@
 package hello.domain.repository.impl;
 
+import org.springframework.stereotype.Repository;
+
 import hello.domain.Room;
 import hello.domain.repository.IRoomRepository;
 
+@Repository
 public class RoomRepository implements IRoomRepository {
 
 	
@@ -11,10 +14,5 @@ public class RoomRepository implements IRoomRepository {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public Room getNearest(Room r) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

@@ -8,6 +8,8 @@ public class Group {
 	public String groupName;
 	
 	public Group parent;
+	public Group leftGroup;
+	public Group rightGroup;
 	public List<Group> subGroups;
 	public List<Room> rooms;
 	
@@ -15,6 +17,8 @@ public class Group {
 	public Group(String name) {
 		this.groupName=name;
 		this.parent=null;
+		this.leftGroup=null;
+		this.rightGroup=null;
 		this.subGroups=new ArrayList<Group>();
 		this.rooms=new ArrayList<Room>();
 	}
@@ -27,6 +31,12 @@ public class Group {
 	
 	public void addParent(Group g){
 		this.parent=g;
+		if(g.subGroups.size()>0){
+		this.leftGroup=g.subGroups.get(g.subGroups.size()-1);
+		this.leftGroup.rightGroup=this;
+		}		
+		g.addSubGroup(this);
+		
 	}
 
 	public void addSubGroup(Group g){

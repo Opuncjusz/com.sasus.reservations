@@ -32,6 +32,7 @@ public class UserRepository implements IUserRepository {
 		User u = new User(name,cardId);
 		userMapByIdCard.put(cardId,u);
 		userMapByName.put(name,u);
+		System.out.println("Zarejestrowano użytkownika : "+name+ " o numerze karty"+cardId);
 		return true;
 	}
 
